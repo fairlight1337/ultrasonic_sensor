@@ -1,0 +1,16 @@
+<package>
+  <description brief="ultrasonic_sensor">
+
+     ultrasonic_sensor
+
+  </description>
+  <author>Jan Winkler</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ultrasonic_sensor</url>
+
+  <depend package="roscpp" />
+
+</package>
+
+
