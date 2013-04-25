@@ -33,10 +33,12 @@ int main(int argc, char **argv) {
 	int nDistance;
 	issBuffer >> nDistance;
 	
-	std_msgs::Int32 int32Out;
-	int32Out.data = nDistance;
-	
-	pubDistance.publish(int32Out);
+	if(nDistance >= 300) { // Distances are at least 300mm for this sensor
+	  std_msgs::Int32 int32Out;
+	  int32Out.data = nDistance;
+	  
+	  pubDistance.publish(int32Out);
+	}
       }
       
       ros::spinOnce();
