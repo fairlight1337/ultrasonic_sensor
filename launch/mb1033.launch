@@ -1,3 +1,5 @@
 <launch>
-  <node pkg="ultrasonic_sensor" name="mb1033" type="mb1033" output="screen" />
+  <node pkg="ultrasonic_sensor" name="mb1033" type="mb1033" output="screen">
+    <param name="device" value="/dev/ttyUSB0" type="str" />
+  </node>
 </launch>
