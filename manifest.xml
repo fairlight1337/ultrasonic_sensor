@@ -9,7 +9,13 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/ultrasonic_sensor</url>
 
+  <!-- ROS dependencies -->
   <depend package="roscpp" />
+  <depend package="std_msgs" />
+
+  <!-- Ubuntu/Debian dependencies -->
+  <rosdep name="libserial0" />
+  <rosdep name="libserial-dev" />
 
 </package>
 
