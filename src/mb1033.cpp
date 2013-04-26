@@ -75,12 +75,18 @@ int main(int argc, char **argv) {
 	int nDistance;
 	issBuffer >> nDistance;
 	
-	if(nDistance >= 300 && nDistance <= 5000) { // Distances are at least 300mm and at most 5000mm for this sensor
-	  std_msgs::Float32 float32Out;
-	  float32Out.data = (float)nDistance / 1000;
-	  
-	  pubDistance.publish(float32Out);
+	if(nDistance < 300) { // At least 0.3m distance (sensor characteristic)
+	  nDistance = 300;
 	}
+	
+	if(nDistance > 5000) { // At most 5.0m distance (sensor characteristic)
+	  nDistance = 5000;
+	}
+	
+	std_msgs::Float32 float32Out;
+	float32Out.data = (float)nDistance / 1000;
+	
+	pubDistance.publish(float32Out);
       }
       
       ros::spinOnce();
