@@ -26,7 +26,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 #include <ros/ros.h>
-#include <std_msgs/Float32.h>
+#include <sensor_msgs/ChannelFloat32.h>
 #include <string>
 #include <sstream>
 #include <SerialStream.h>
@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "ultrasonic_sensor_mb1033");
   ros::NodeHandle nh("~");
   
-  ros::Publisher pubDistance = nh.advertise<std_msgs::Float32>("distance", 1);
+  ros::Publisher pubDistance = nh.advertise<sensor_msgs::ChannelFloat32>("distance", 1);
   
   // Parameters
   string strSerialPort;
@@ -83,8 +83,9 @@ int main(int argc, char **argv) {
 	  nDistance = 5000;
 	}
 	
-	std_msgs::Float32 float32Out;
-	float32Out.data = (float)nDistance / 1000;
+	sensor_msgs::ChannelFloat32 float32Out;
+	float32Out.values.push_back((float)nDistance / 1000);
+	float32Out.name = "distance";
 	
 	pubDistance.publish(float32Out);
       }
